@@ -1,0 +1,100 @@
+<p class="img-logo">
+  <img src="./../../../assets/Notes.webp" alt="Logo" />
+</p>
+
+<p>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Nota </mat-panel-title>
+        <mat-panel-description>
+          Crear o editar una nota.
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p class="form-note">
+        <mat-form-field class="full-width">
+          <mat-label>Nota</mat-label>
+          <input
+            matInput
+            placeholder="Ej. Llamar a..."
+            [(ngModel)]="note.name"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Categorias</mat-label>
+          <mat-select [(ngModel)]="note.categorie">
+            <mat-option *ngFor="let food of categories" [value]="food.value">
+              {{ food.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Descripcion</mat-label>
+          <textarea
+            rows="4"
+            matInput
+            placeholder="Ej. llamar por la mmañana"
+            [(ngModel)]="note.description"
+          ></textarea>
+        </mat-form-field>
+      </p>
+      <p class="action-button">
+        <button mat-raised-button [color]="getColorButton()" (click)="saveNote()">
+          <div class="btn-content">
+            <mat-icon>save</mat-icon>
+            <span> {{ nameButton }} </span>
+          </div>
+        </button>
+        <button *ngIf="nameButton == 'Editar'" mat-raised-button color="warn" (click)="cancelar()">
+          <div class="btn-content">
+            <mat-icon>cancel</mat-icon>
+            <span> Cancelar </span>
+          </div>
+        </button>
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</p>
+
+<section>
+  <mat-card *ngFor="let note of notes">
+    <mat-card-header>
+      <div mat-card-avatar class="header-card">
+        <div class="title-card">
+          <h3>
+            {{ note.name }}
+          </h3>
+        </div>
+        <div class="header-action-card card-footer">
+          <p matLine class="demo-2">{{ note.id | date }}</p>
+        </div>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p matLine>{{ note.categorie }}</p>
+      <p matLine class="demo-2">{{ note.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteNote(note)"
+        matTooltip="Eliminar"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <button
+        mat-raised-button
+        (click)="editNote(note)"
+        color="accent"
+        matTooltip="Editar"
+      >
+        <mat-icon>create</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>

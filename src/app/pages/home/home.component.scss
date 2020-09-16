@@ -1,0 +1,47 @@
+.img-logo {
+  text-align: center;
+  img {
+    height: 300px;
+  }
+}
+
+.btn-content {
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+  span {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+}
+
+.form-note {
+  min-width: 150px;
+  width: 100%;
+}
+
+.full-width {
+  padding: 0;
+  width: 100%;
+}
+
+.header-card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-footer{
+  font-style: italic;
+  text-align: right;
+  p{
+    letter-spacing: 2px;
+  }
+}
+
+.action-button{
+  display: flex;
+  justify-content: space-evenly;
+}
